@@ -1,38 +1,38 @@
 * {
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
 }
 
 body {
-	background-color: #353535;
 	font-family: 'Raleway', sans-serif;
+
+	background-color: #353535;
 }
 
-.wrapper {
+.Outside {
 	max-width: 600px;
 	margin: 0 auto;
 	width: 100%;
 	text-align: center;
 	padding: 2%;
-	background-color: #424242;
-	height: 500px;
+	background-color: #444444;
+	height: 600px;
 }
 
-h1 {
-    color: #ecf0f1;
-}
 
-h1 + p {
+h1{
 	margin-bottom: 5%;
-    color: #3498db;
+    color: #FF7373;
+}	
+
+p {
+	margin-bottom: 10%;
+    color: #3d8fc6;
 }
 
-.scoreWrap {float: left;}
-.timeWrap {float: right;}
+.scorediv{float: left;}
+.timediv{float: right;}
 
-.outerWrap:after {
+.outerdiv:after {
 	content: "";
 	display: block;
 	clear: both;
@@ -43,18 +43,12 @@ h1 + p {
 }
 
 button {
-   border: none;
   background-color: #FF7373;
-  box-shadow: 0px 5px 0px 0px #CE4646;
-  outline: none;
-  border-radius: 5px;
   padding: 10px 15px;
   font-size: 22px;
-  text-decoration: none;
   margin: 20px;
   color: #fff;
   position: relative;
-  display: inline-block;
   cursor: pointer;
 }
 
@@ -64,17 +58,35 @@ button:active {
   box-shadow: 0px 1px 0px 0px;
 }
 
-.scoreWrap p, .scoreWrap span, .timeWrap p, .timeWrap span {
+.scorediv p, .scorediv span, .timediv p, .timediv span {
     font-size: 30px;
     color: #FF7373;
 }
 
-.wordsWrap {
+.wordsdiv {
 	margin-top: 50px;
 }
 
-.words span{
+.wordsdiv span{
     font-size: 60px;
     letter-spacing: 1px;
     color: #ECF0F1;
+}
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid #aaa;
+        padding: 5px;
+        text-align: left;
+    }
+#block2
+{
+    background-color: #F5F5F5;
+    margin: 10px 20px;
+    padding: 20px;
+    width: 180px;
 }

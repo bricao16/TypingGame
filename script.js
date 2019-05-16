@@ -1,27 +1,29 @@
-var temp = document.querySelector('.time');
+var time1 = document.querySelector('.time');
  	var button = document.querySelector("button");
  	var words = document.querySelector(".words");
- 	var timerDiv = document.querySelector(".time");
- 	var scoreDiv = document.querySelector(".score");
+ 	var timer = document.querySelector(".time");
+ 	var score1 = document.querySelector(".score");
  	var points = 0;
- 	var spans;
- 	var typed;
+ 	var span1;
+ 	var word;
  	var seconds = 60;
-
+	
+	function points() {
+	return points;
+	}
  	function countdown() {
  		points = 0;
  		var timer = setInterval(function(){
  			button.disabled = true;
     		seconds--;
-    		temp.innerHTML = seconds;
+    		time1.innerHTML = seconds;
     		if (seconds === 0) {
-    			alert("Game over! Your score is " + points);
-    			scoreDiv.innerHTML = "0";
+    			score1.innerHTML = "0";
     			words.innerHTML = "";
     			button.disabled = false;
     			clearInterval(timer);
     			seconds = 60;
-    			timerDiv.innerHTML = "60";
+    			timer.innerHTML = "60";
     			button.disabled = false;	
     		}
  		}, 1000);
@@ -29,17 +31,16 @@ var temp = document.querySelector('.time');
 
   	function random() {
   		words.innerHTML = "";
-  		var random = Math.floor(Math.random() * (1943 - 0 + 1)) + 0;
-  		var wordArray = list[random].split("");
-  		for (var i = 0; i < wordArray.length; i++) { //building the words with spans around the letters
+  		var random = Math.floor(Math.random() * (1944));
+  		var wordArr = list[random].split("");
+  		for (var i = 0; i < wordArr.length; i++) { 
   			var span = document.createElement("span");
   			span.classList.add("span");
-  			span.innerHTML = wordArray[i];
+  			span.innerHTML = wordArr[i];
   			words.appendChild(span);
   		}
-  		spans = document.querySelectorAll(".span");
+  		span1 = document.querySelectorAll(".span");
   	}
-
 
   	button.addEventListener("click", function(e){
   		countdown();
@@ -48,35 +49,31 @@ var temp = document.querySelector('.time');
   	});
 
 
-  	function typing(e) {
-  			typed = String.fromCharCode(e.which);
-  			for (var i = 0; i < spans.length; i++) {
-  				if (spans[i].innerHTML === typed) { // if typed letter is the one from the word
-  					if (spans[i].classList.contains("bg")) { // if it already has class with the bacground color then check the next one
+  	function game(e) {
+  			word = String.fromCharCode(e.which);
+  			for (var i = 0; i < span1.length; i++) {
+  				if (span1[i].innerHTML === word) { 
+  					if (span1[i].classList.contains("bg")) {
   						continue;
-  					} else if (spans[i].classList.contains("bg") === false && spans[i-1] === undefined || spans[i-1].classList.contains("bg") !== false ) { // if it dont have class, if it is not first letter or if the letter before it dont have class (this is done to avoid marking the letters who are not in order for being checked, for example if you have two "A"s so to avoid marking both of them if the first one is at the index 0 and second at index 5 for example)
-  						spans[i].classList.add("bg");
+  					} else if (span1[i].classList.contains("bg") === false && span1[i-1] === undefined || span1[i-1].classList.contains("bg") !== false ) { // if it dont have class, if it is not first letter or if the letter before it dont have class (this is done to avoid marking the letters who are not in order for being checked, for example if you have two "A"s so to avoid marking both of them if the first one is at the index 0 and second at index 5 for example)
+  						span1[i].classList.add("bg");
   						break;
   					}
   				}
   			}
-  			var checker = 0;
-  			for (var j = 0; j < spans.length; j++) { //checking if all the letters are typed
-  				if (spans[j].className === "span bg") {
-  					checker++;
+  			var correctLetter = 0;
+  			for (var j = 0; j < span1.length; j++) { 
+  				if (span1[j].className === "span bg") {
+  					correctLetter++;
   				}
-  				if (checker === spans.length) { // if so, animate the words with animate.css class
-            //spark.pause();
-					 // spark.currentTime = 0;
-           // spark.play();
-  					words.classList.add("animated");
-  					words.classList.add("fadeOut");
-  					points++; // increment the points
-  					scoreDiv.innerHTML = points; //add points to the points div
+  				if (correctLetter === span1.length) { 
+
+  					points++; 
+  					score1.innerHTML = points; 
   					document.removeEventListener("keydown", typing, false);
   					setTimeout(function(){
-  						words.className = "words"; // restart the classes
-  						random(); // give another word
+  						words.className = "words";
+  						random(); 
   						document.addEventListener("keydown", typing, false);
   					}, 400);
   				}
@@ -95,7 +92,7 @@ var temp = document.querySelector('.time');
   'ANYTHING','ANYWAY','ANYWHERE','APART','APARTMENT','APPEARANCE','APPLE','APPLIED',
   'APPROPRIATE','ARE','AREA','ARM','ARMY','AROUND','ARRANGE','ARRANGEMENT',
   'ARRIVE','ARROW','ART','ARTICLE','AS','ASIDE','ASK','ASLEEP',
-  'AT','ATE','ATMOSPHERE','ATOM','ATOMIC','ATTACHED','ATTACK','ATTEMPT',
+  'AT','ATE','ATMOSPHERE','ATOM','ATOMIC','ATTACHED','ATTACK','ATtime1T',
   'ATTENTION','AUDIENCE','AUTHOR','AUTOMOBILE','AVAILABLE','AVERAGE','AVOID','AWARE',
   'AWAY','BABY','BACK','BAD','BADLY','BAG','BALANCE','BALL',
   'BALLOON','BAND','BANK','BAR','BARE','BARK','BARN','BASE',
@@ -295,7 +292,7 @@ var temp = document.querySelector('.time');
   'SWEPT','SWIM','SWIMMING','SWING','SWUNG','SYLLABLE','SYMBOL','SYSTEM',
   'TABLE','TAIL','TAKE','TAKEN','TALES','TALK','TALL','TANK',
   'TAPE','TASK','TASTE','TAUGHT','TAX','TEA','TEACH','TEACHER',
-  'TEAM','TEARS','TEETH','TELEPHONE','TELEVISION','TELL','TEMPERATURE','TEN',
+  'TEAM','TEARS','TEETH','TELEPHONE','TELEVISION','TELL','time1ERATURE','TEN',
   'TENT','TERM','TERRIBLE','TEST','THAN','THANK','THAT','THEE',
   'THEM','THEMSELVES','THEN','THEORY','THERE','THEREFORE','THESE','THEY',
   'THICK','THIN','THING','THINK','THIRD','THIRTY','THIS','THOSE',
