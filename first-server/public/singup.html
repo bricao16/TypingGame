@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style2.css">
+       <link rel="stylesheet" type="text/css" href="./box/iconselect.css" >
+       <script type="text/javascript" src="./box/iconselect.js"></script>
+        
+        <script type="text/javascript" src="./box/iscroll.js"></script></head>
+<style>
+
+.icon-select{
+    width:0px;
+ }
+
+ .icon-select .selected-box {
+
+     position: relative;
+     margin: 0px;
+     padding: 0px;
+     width: 70px; /* sil */
+     height: 60px; /* sil */
+     border: 1px solid #999999;
+
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+	 background-color: white;
+	 
+	 z-index: 1000;
+
+ }
+
+ .icon-select .selected-box:hover {
+
+     position: relative;
+     margin: 0px;
+     padding: 0px;
+     width: 70px; /* sil */
+     height: 60px; /* sil */
+     border: 1px solid #000000;
+     background-color: #FFFFFF;
+
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+
+ }
+
+ .icon-select .selected-icon {
+
+     position: absolute;
+     margin: 0px;
+     padding: 0px;
+     top:5px;
+     left:5px;
+     width: 48px; /* sil */
+     height: 48px; /* sil */
+
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+
+ }
+
+ .icon-select .component-icon{
+     position: absolute;
+     bottom:5px;
+     right:4px;
+ }
+
+ .icon-select .box {
+
+     position: absolute;
+     top:0px;
+     left:71px;
+     margin: 0px;
+     padding: 0px;
+     width: 170px; /* sil */
+     height: 170px; /* sil */
+     border: 1px solid #EEEEEE;
+     background-color: #EEEEEE;
+
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+     
+     
+     overflow:auto;
+     /*
+     -webkit-overflow-scrolling: touch;
+     */
+
+ }
+
+ .icon-select .icon {
+     position: relative;
+     margin: 5px 0px 0px 5px;
+     padding: 0px;
+     width: 48px; /* sil */
+     height: 48px; /* sil */
+     border: 1px solid #CCCCCC;
+     background-color: #FFFFFF;
+
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+
+     overflow:hidden;
+     float: left;
+ }
+
+ .icon-select .icon:hover {
+     border: 1px solid #000000;
+ }
+
+ .icon-select .icon.selected {
+     position: relative;
+     margin: 5px 0px 0px 5px;
+     padding: 0px;
+     width: 48px; /* sil */
+     height: 48px; /* sil */
+     border: 1px solid #EEEEEE;
+     background-color: #EEEEEE;
+
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     border-radius: 3px;
+
+     overflow:hidden;
+     float: left;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+  color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+
+</style>
+<body>
+
+<form name="login" action="/upload2" method="POST">
+  <div class="container">
+    <h1>Register</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>Username</b></label>
+    <input type="text" placeholder="Enter username" name="userid" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <hr>
+
+    <button type="submit" class="registerbtn">Register</button>
+
+  </div>
+  
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+    <dl id="sample" class="dropdown">
+        <dt><a href="#"><span>Please select an avatar</span></a></dt>
+         <script>
+            
+        var iconSelect;
+        window.onload = function(){
+            iconSelect = new IconSelect("my-icon-select", 
+                {'selectedIconWidth':200,
+                'selectedIconHeight':200,
+                'selectedBoxPadding':1,
+                'iconsWidth':48,
+                'iconsHeight':48,
+                'boxIconSpace':1,
+                'vectoralIconNumber':2,
+                'horizontalIconNumber':6});
+            var icons = [];
+		
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/1.png', 'iconValue':'1'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/2.png', 'iconValue':'2'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/3.png', 'iconValue':'3'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/4.png', 'iconValue':'4'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/5.png', 'iconValue':'5'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/6.png', 'iconValue':'6'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/7.png', 'iconValue':'7'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/8.png', 'iconValue':'8'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/9.png', 'iconValue':'9'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/10.png', 'iconValue':'10'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/11.png', 'iconValue':'11'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/12.png', 'iconValue':'12'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/13.png', 'iconValue':'13'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/14.png', 'iconValue':'14'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/15.png', 'iconValue':'15'});
+            icons.push({'iconFilePath':'https://raw.githubusercontent.com/bricao16/TypingGame/master/icons/16.png', 'iconValue':'16'});
+
+            iconSelect.refresh(icons);
+        };
+            
+        </script>
+        
+    </head>
+    <body>
+        
+        <h2>Icon/Image Select: Vectoral Example (Javascript)</h2>
+        
+        <div id="my-icon-select"></div>
+        
+    </body>    </dl>
+    <span id="result"></span>
+</form>
+
+</body>
+</html>

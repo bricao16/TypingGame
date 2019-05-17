@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Typing game</title>
+	<link rel="stylesheet" href="./box/style.css">
+	<link rel="stylesheet" href="./box/style3.css">
+	<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script type="application/javascript" src="./box/wsclient.js"></script>
+	<script type="application/javascript" src="../server.js"></script>
+
+</head>
+<body>
+	<div class="Outside">
+		<h1>Typing game</h1>
+		<p>Type as many words as you can until time runs out!</p>
+		<button>START</button>
+		<div class="outerdiv">
+			<div class="scorediv">
+				<p>Score</p>
+				<span class="score">0</span>
+			</div>
+			<div class="timediv">
+				<p>Time left</p>
+				<span class="time">60</span>
+			</div>
+		</div>
+		<div class="wordsdiv">
+			<p class="words"></p>
+		</div>
+	</div>
+
+			<form id="jsform" action="/game2" method="POST">
+				<p hidden id="num"></p>
+			</form>
+    <button onClick="choose('LEVEL1')">LEVEL1</button>
+    <button onClick="choose('LEVEL2')">LEVEL2</button>
+    <button onClick="choose('LEVEL3')">LEVEL3</button>
+
+
+
+    <body onload="Init();">
+        <div id="app" style="float:left;">
+            <h3>Chat Room</h3>
+            <p>Number of Clients: {{ client_count }}</p>
+            <input type="text" v-model="new_message" value="" />
+            <button type="button" @click="SendMessage">Send</button>
+            <br />
+            <ul>
+                <li v-for="message in chat_messages">{{ message }}</li>
+            </ul>
+        </div>
+    </body>
+	<script src="./box/script.js"> </script>
+	<script src="./box/test.js"> </script>
+
+
+
+	<script src="script.js"> </script>
+</body>
+<style>
+li{
+color: white; 
+}
+</style>
+</html>
+</html>
