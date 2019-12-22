@@ -10,7 +10,7 @@ var md5   = require("blueimp-md5");
 var mime = require('mime-types');
 var multiparty = require('multiparty');
 
-var port = 8020;
+var port = process.env.PORT || 80;
 var public_dir = path.join(__dirname, 'public');
 //var public_dir = path.join(__dirname, 'tmarrinan.github.io');
 var db_filename = path.join(__dirname, 'db', 'login.sqlite3');
